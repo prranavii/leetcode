@@ -1,17 +1,15 @@
 class Solution {
     public int climbStairs(int n) {
-        Integer [] dp = new Integer[n+1];
+        int [] dp = new int[n+1];
+        dp[0]=1;
+        dp[1]=1;
 
-        return helper(n,dp);
-    }
+        for(int i=2;i<=n;i++){
+            int onestep = dp[i-1];
+            int twostep = dp[i-2];
 
-    public int helper(int n,Integer[] dp){
-        if(n==0 || n==1) return 1;
-        if(dp[n] != null) return dp[n];
-
-        int onestep = helper(n-1,dp);
-        int twostep = helper(n-2,dp);
-
-        return dp[n] = onestep+twostep;
+            dp[i]=onestep+twostep;
+        }
+        return dp[n];
     }
 }
