@@ -1,26 +1,47 @@
+// class Solution {
+//     public boolean wordBreak(String s, List<String> wordDict) {
+        
+//         HashSet<String> set = new HashSet<>(wordDict);
+        
+//         boolean[] dp = new boolean[s.length() + 1];
+        
+//         dp[0] = true;
+        
+//         for (int i = 1; i <= s.length(); i++) {
+            
+//             for (int j = 0; j < i; j++) {
+                
+//                 if (dp[j] && set.contains(s.substring(j, i))) {
+//                     dp[i] = true;
+//                     break;
+//                 }
+//             }
+//         }
+        
+//         return dp[s.length()];
+//     }
+// }
+
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
+        
         HashSet<String> set = new HashSet<>(wordDict);
-        Boolean [] dp = new Boolean[s.length()];
-        return helper(0,s,set,dp);
-
-    }
-
-    public boolean helper(int i , String s , HashSet<String> set, Boolean [] dp ){
-        if(i==s.length()) return true;
-
-        if(dp[i]!=null) return dp[i];
-
-        for(int j=i+1;j<=s.length();j++){
-            String word = s.substring(i,j);
-            if(set.contains(word)){
-                if(helper(j,s,set,dp)){
-                    return dp[i]=true;
+        
+        boolean[] dp = new boolean[s.length() + 1];
+        
+        dp[0] = true;
+        
+        for (int i = 1; i <= s.length(); i++) {
+            
+            for (int j = 0; j < i; j++) {
+                
+                if (dp[j] && set.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
                 }
             }
         }
-
-        return dp[i]=false;
-
+        
+        return dp[s.length()];
     }
 }
