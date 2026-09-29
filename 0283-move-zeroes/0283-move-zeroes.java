@@ -12,6 +12,5 @@ class Solution {
             nums[pos]=0;
             pos++;
         }
-
     }
 }
